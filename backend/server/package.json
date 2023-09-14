@@ -1,0 +1,31 @@
+{
+  "name": "gr.kokkales.chatapp.backend.server",
+  "version": "1.0.0",
+  "description": "Chat Web App server in using sockets and express js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kokkales/Chat-WebApp.git"
+  },
+  "keywords": [
+    "chat",
+    "js",
+    "server",
+    "express",
+    "web",
+    "sockets",
+    "app"
+  ],
+  "author": "Kokkalis Konstantinos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kokkales/Chat-WebApp/issues"
+  },
+  "homepage": "https://github.com/Kokkales/Chat-WebApp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

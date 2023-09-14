@@ -1,0 +1,21 @@
+.mainContent {
+  background-color: purple;
+  height: 75vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  padding: 10px;
+}
+
+.friendsList {
+  background-color: rgb(82, 86, 82);
+  height: 75vh;
+  width: 30%;
+}
+
+.chat {
+  background-color: rgb(14, 177, 14);
+  height: 75vh;
+  width: 70%;
+}
