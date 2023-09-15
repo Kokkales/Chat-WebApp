@@ -1,0 +1,28 @@
+.mainNavigation {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* justify-content: center; */
+  /* height: 10vh; */
+  padding: 0 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logoSection {
+  /* height: 100%; */
+  /* background-color: green; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoBox {
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

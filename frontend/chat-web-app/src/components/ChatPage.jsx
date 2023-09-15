@@ -1,20 +1,25 @@
-import ChatPageLayout from './mainLayouts/ChatPageLayout';
 import classes from './ChatPage.module.css';
 import Friends from './Friends';
 import Chat from './Chat';
+import MainNavigationLayout from './mainLayouts/MainNavigationLayout';
+import FooterLayout from './mainLayouts/FooterLayout';
 function ChatPage(props) {
   //code here
   return (
-    <ChatPageLayout>
-      <div className={classes.mainContent}>
-        <section className={classes.friendsList}>
-          <Friends />
-        </section>
-        <section className={classes.chat}>
-          <Chat />
-        </section>
-      </div>
-    </ChatPageLayout>
+    <div className={classes.content}>
+      <section className={classes.navigation}>
+        <MainNavigationLayout />
+      </section>
+      <section className={classes.friendsSection}>
+        <Friends />
+      </section>
+      <section className={classes.chatSection}>
+        <Chat />
+      </section>
+      <section className={classes.footerChat}>
+        <FooterLayout />
+      </section>
+    </div>
   );
 }
 

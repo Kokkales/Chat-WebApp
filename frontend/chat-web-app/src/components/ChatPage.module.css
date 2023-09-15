@@ -1,21 +1,33 @@
-.mainContent {
-  background-color: purple;
-  height: 75vh;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
-  padding: 10px;
+.content {
+  /* background-color: purple; */
+  height: 100vh;
+  width: auto;
+  /* padding: 20px; */
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-rows: 10% 85% 5%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
-.friendsList {
-  background-color: rgb(82, 86, 82);
-  height: 75vh;
-  width: 30%;
+.navigation {
+  /* background-color: blue; */
+  grid-area: 1 / 1 / 2 / 3;
 }
 
-.chat {
-  background-color: rgb(14, 177, 14);
-  height: 75vh;
-  width: 70%;
+.friendsSection {
+  /* background-color: rgb(192, 223, 192); */
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 20px;
+}
+
+.chatSection {
+  /* background-color: rgb(192, 223, 192); */
+  grid-area: 2 / 2 / 3 / 3;
+  padding: 20px;
+}
+
+.footerChat {
+  /* background-color: pink; */
+  grid-area: 3 / 1 / 4 / 3;
 }

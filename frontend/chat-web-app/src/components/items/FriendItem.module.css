@@ -1,0 +1,14 @@
+.friendItem {
+  background-color: rgb(255, 255, 255);
+  width: auto;
+  height: 10vh;
+  border-radius: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
