@@ -1,0 +1,54 @@
+.messageRowLeft {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: flex-end;
+  row-gap: 0px;
+}
+
+.messageRowRight {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  row-gap: 0px;
+  /* align-items: center; */
+  justify-content: flex-start;
+}
+
+.message {
+  inline-size: max-content;
+  border-radius: 12px;
+  width: auto;
+  height: auto;
+}
+
+.messageTextReciever {
+  background-color: #49d1f8;
+  width: auto;
+  max-width: 40vh;
+  height: max-content;
+  padding: 10px;
+  border-radius: 12px 0px 12px 12px;
+  white-space: normal;
+  /* Allow text to wrap to the next line */
+  /* overflow: hidden; */
+  word-wrap: break-word;
+  /* Break long words and prevent overflow */
+}
+
+.messageTextSender {
+  background-color: #8deaba;
+  width: auto;
+  max-width: 40vh;
+  height: max-content;
+  padding: 10px;
+  border-radius: 0px 12px 12px 12px;
+  white-space: normal;
+  /* Allow text to wrap to the next line */
+  /* overflow: hidden; */
+  word-wrap: break-word;
+  /* Break long words and prevent overflow */
+}

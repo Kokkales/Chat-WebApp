@@ -4,6 +4,8 @@ import sendIcon from '../components/send.png';
 import infoIcon from '../components/info.png';
 import userIcon from '../components/user.png';
 import phoneIcon from '../components/telephone.png';
+// import Message from './Message';
+import MessageItem from './items/MessageItem';
 function Chat(props) {
   return (
     <Card>
@@ -32,7 +34,30 @@ function Chat(props) {
             />
           </div>
         </section>
-        <section className={classes.chatSection}></section>
+        <section className={classes.chatSection}>
+          <MessageItem text="Hello Dea" type="reciever" />
+          <MessageItem text="Hello Kostas" type="sender" />
+
+          <MessageItem text="How are you" type="reciever" />
+          <MessageItem text="Good how are you?" type="sender" />
+          <MessageItem text="Good how are you?" type="sender" />
+          <MessageItem text="Good how are you?" type="sender" />
+
+          <MessageItem text="Studyiiinggg" type="reciever" />
+          <MessageItem text="Studyiiinggg" type="reciever" />
+          <MessageItem
+            text="Studyiiinggggggggggggggggggggggggggggggggggggggggggg"
+            type="reciever"
+          />
+          <MessageItem
+            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti animi dolorum architecto corrupti eum recusandae repellendus accusamus ea quaerat aliquid esse quod amet quo dolor, quidem adipisci, neque odio doloremque!"
+            type="sender"
+          />
+          <MessageItem
+            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti animi dolorum architecto corrupti eum recusandae repellendus accusamus ea quaerat aliquid esse quod amet quo dolor, quidem adipisci, neque odio doloremque!"
+            type="reciever"
+          />
+        </section>
         <section className={classes.textSection}>
           <div className={classes.textBox}>
             <input
