@@ -1,9 +1,23 @@
 import classes from './MainNavigationLayout.module.css';
-import logoPng from './chat.png';
-import options from './menu.png';
+import logoPng from '../../images/chat.png';
+import options from '../../images/menu.png';
+import { useState, useRef, useEffect } from 'react';
+import userProfileImg from '../../images/user.png';
 function MainNavigationLayout() {
+  const [menuIsClicked, setMenuIsClicked] = useState(false);
+
+  function profileIconClickHandler(event) {
+    event.preventDefault();
+    console.log('Profile Icon Clicked');
+    setMenuIsClicked(!menuIsClicked);
+  }
+  function exitHandler(event) {
+    event.preventDefault();
+    console.log('Exit Clicked');
+    setMenuIsClicked(false);
+  }
   return (
-    <nav className={classes.mainNavigation}>
+    <nav className={classes.mainNavigation} onBlur={exitHandler}>
       <section className={classes.logoSection}>
         <div className={classes.logoBox}>
           <img src={logoPng} alt="logo" width={'60px'} height={'60px'} />
@@ -12,8 +26,40 @@ function MainNavigationLayout() {
       </section>
       <section className={classes.optionsSection}>
         <div className={classes.optionsBox}>
-          <img src={options} alt="logo" width={'40px'} height={'40px'} />
+          <img
+            src={userProfileImg}
+            alt="logo"
+            width={'40px'}
+            height={'40px'}
+            onClick={profileIconClickHandler}
+            // onBlur={exitHandler}
+          />
         </div>
+        {menuIsClicked && (
+          <div className={classes.navSidebar}>
+            <ul>
+              <li>
+                <img
+                  className={classes.menuLogo}
+                  src={userProfileImg}
+                  alt="logo"
+                  width={'40px'}
+                  height={'40px'}
+                  onClick={profileIconClickHandler}
+                />
+              </li>
+              <li>
+                <a href="http://localhost:3000/">Profile</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/">Add Friend</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/">Info</a>
+              </li>
+            </ul>
+          </div>
+        )}
       </section>
     </nav>
   );

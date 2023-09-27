@@ -1,0 +1,71 @@
+.loginContent {
+  /* background-color: pink; */
+  height: 100vh;
+}
+
+.loginSection {
+  /* background-color: #e42121; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  position: absolute;
+  width: 50vh;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userBox {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid grey;
+  outline: none;
+}
+
+label {
+  /* TODO */
+}
+
+.loginBtnBox {
+  margin-top: 10px;
+}
+
+.loginBtn {
+  background-color: #8deaba;
+  border-radius: 8px;
+  border: none;
+  width: 100px;
+  height: 30px;
+}
+
+.loginBtn:hover {
+  background-color: #8deababc;
+  cursor: pointer;
+}
+
+.registerBox {
+  margin-top: 5px;
+  text-decoration: none;
+  color: white;
+}
