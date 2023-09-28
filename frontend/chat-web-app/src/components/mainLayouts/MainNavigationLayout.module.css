@@ -29,6 +29,10 @@
 
 /* NAVIGATION BAR */
 
+.userProfileImg:hover {
+  cursor: pointer;
+}
+
 .navSidebar {
   position: fixed;
   top: 0;

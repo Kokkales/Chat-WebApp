@@ -17,7 +17,7 @@ function MainNavigationLayout() {
     setMenuIsClicked(false);
   }
   return (
-    <nav className={classes.mainNavigation} onBlur={exitHandler}>
+    <nav className={classes.mainNavigation}>
       <section className={classes.logoSection}>
         <div className={classes.logoBox}>
           <img src={logoPng} alt="logo" width={'60px'} height={'60px'} />
@@ -27,6 +27,7 @@ function MainNavigationLayout() {
       <section className={classes.optionsSection}>
         <div className={classes.optionsBox}>
           <img
+            className={classes.userProfileImg}
             src={userProfileImg}
             alt="logo"
             width={'40px'}
@@ -36,7 +37,7 @@ function MainNavigationLayout() {
           />
         </div>
         {menuIsClicked && (
-          <div className={classes.navSidebar}>
+          <div className={classes.navSidebar} onMouseLeave={exitHandler}>
             <ul>
               <li>
                 <img
