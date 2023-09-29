@@ -1,4 +1,4 @@
-import Registration from '../Registration';
+import Registration from '../auth/Registration';
 
 function RegistrationPage(props) {
   return (

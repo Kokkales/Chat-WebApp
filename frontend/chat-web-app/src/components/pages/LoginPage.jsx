@@ -1,4 +1,4 @@
-import Login from '../Login';
+import Login from '../auth/Login';
 
 function LoginPage(props) {
   return (

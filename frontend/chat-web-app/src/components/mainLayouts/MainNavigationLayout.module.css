@@ -4,8 +4,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* justify-content: center; */
-  /* height: 10vh; */
   padding: 0 1rem;
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -13,8 +11,6 @@
 }
 
 .logoSection {
-  /* height: 100%; */
-  /* background-color: green; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,6 +45,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  transition: 1s;
+}
+
+.navSidebar:disabled {
+  /* transition: 0.1s; */
 }
 
 .navSidebar ul {

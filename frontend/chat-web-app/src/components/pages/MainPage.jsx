@@ -1,10 +1,11 @@
 import ChatPage from '../ChatPage';
+import Layout from '../mainLayouts/Layout';
 
 function MainPage(props) {
   return (
-    <div>
+    <Layout>
       <ChatPage></ChatPage>
-    </div>
+    </Layout>
   );
 }
 
