@@ -1,0 +1,21 @@
+.profileContent {
+  height: 100%;
+  background-color: red;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 20% 80%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.profileSection {
+  grid-area: 1/1/2/2;
+}
+
+.profileDataSection {
+  grid-area: 2/1/3/2;
+}
+
+.allFriendsSection {
+  grid-area: 1/2/3/3;
+}

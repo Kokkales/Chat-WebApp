@@ -57,8 +57,8 @@ function MainNavigationLayout() {
                   className={classes.menuLogo}
                   src={userProfileImg}
                   alt="logo"
-                  width={'40px'}
-                  height={'40px'}
+                  width={'60px'}
+                  height={'60px'}
                   onClick={profileIconClickHandler}
                 />
               </li>
@@ -70,6 +70,9 @@ function MainNavigationLayout() {
               </li>
               <li>
                 <a href="http://localhost:3000/info">Info</a>
+              </li>
+              <li>
+                <a href="http://localhost:3000/">Logout</a>
               </li>
             </ul>
           </div>
