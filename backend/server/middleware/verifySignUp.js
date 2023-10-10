@@ -1,8 +1,17 @@
+const { json } = require('sequelize');
 const db = require('../models');
 const ROLES = db.ROLES;
 const User = db.user; //take the user entity
+if (!User) {
+  console.error('Entity is not existing');
+} else {
+  console.error('Entity exists');
+}
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
+  console.log('This is the username: ' + req.body.username);
+  // const username = req.body.username;
+  // const email = req.body.email;
   // Username
   User.findOne({
     where: {
@@ -16,6 +25,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
       return;
     }
 
+    console.log('this is the email: ' + req.body.email);
     // Email
     User.findOne({
       where: {

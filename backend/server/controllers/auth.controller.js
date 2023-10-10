@@ -12,33 +12,37 @@ exports.signup = (req, res) => {
   // Save User to Database
   User.create({
     username: req.body.username,
-    // email: req.body.email,
+    email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
-  })
-    .then((user) => {
-      if (req.body.roles) {
-        Role.findAll({
-          where: {
-            name: {
-              [Op.or]: req.body.roles,
-            },
-          },
-        }).then((roles) => {
-          user.setRoles(roles).then(() => {
-            res.send({ message: 'User was registered successfully!' });
-          });
-        });
-      } else {
-        // user role = 1
-        user.setRoles([1]).then(() => {
-          res.send({ message: 'User was registered successfully!' });
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({ message: err.message });
+  }).then((user) => {
+    //   console.log(req.body.roles);
+    //   if (req.body.roles) {
+    //     console.log('ok');
+    //     Role.findAll({
+    //       where: {
+    //         name: {
+    //           [Op.in]: req.body.roles,
+    //         },
+    //       },
+    //     });
+    //     .then((roles) => {
+    //     console.log('Those are my roles: ' + roles);
+    //     user.setRoles(roles).then(() => {
+    //       res.send({ message: 'User was registered successfully!' });
+    //     });
+    //   });
+    // } else {
+    // user role = 1
+    user.setRoles([1]).then(() => {
+      res.send({ message: 'User was registered successfully!' });
     });
+  });
 };
+// .catch((err) => {
+//   console.error(err);
+//   res.status(500).send({ message: err.message });
+// });
+// };
 
 exports.signin = (req, res) => {
   User.findOne({
@@ -71,6 +75,7 @@ exports.signin = (req, res) => {
 
       var authorities = [];
       user.getRoles().then((roles) => {
+        console.log('The roles are: ' + roles);
         for (let i = 0; i < roles.length; i++) {
           authorities.push('ROLE_' + roles[i].name.toUpperCase());
         }

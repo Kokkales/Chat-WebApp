@@ -55,6 +55,6 @@ db.role.belongsToMany(db.user, {
 db.user.hasOne(db.session, { foreignKey: 'userId', as: 'UserSession' });
 db.session.belongsTo(db.user, { foreignKey: 'userId' });
 
-db.ROLES = ['user', 'admin', 'moderator'];
+db.ROLES = ['user', 'admin'];
 
 module.exports = db;

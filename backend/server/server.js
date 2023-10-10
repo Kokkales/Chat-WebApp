@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 var corsOptions = {
@@ -17,24 +20,21 @@ db.sequelize.sync({ force: true }).then(() => {
 function initial() {
   Role.create({
     id: 1,
-    role: 'user',
+    name: 'user',
   });
+
+  // Role.create({
+  //   id: 2,
+  //   name: 'moderator',
+  // });
 
   Role.create({
     id: 2,
-    role: 'moderator',
-  });
-
-  Role.create({
-    id: 3,
-    role: 'admin',
+    name: 'admin',
   });
 }
 
 //cors activate
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get('/', (req, res) => {
