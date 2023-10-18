@@ -10,14 +10,16 @@ module.exports = function (app) {
     next();
   });
 
-  app.get('/api/test/all', controller.allAccess);
+  app.get('/getUserFriends', [authJwt.verifyToken], controller.userFriends);
 
-  app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);
+  app.get('/getUserData', [authJwt.verifyToken], controller.userData);
+
+  app.post('/addFriend', controller.addFriend);
 
   app.get(
-    '/api/test/mod',
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
+    '/api/test/user',
+    [authJwt.verifyToken, authJwt.isUser],
+    controller.userBoard
   );
 
   app.get(
@@ -26,3 +28,7 @@ module.exports = function (app) {
     controller.adminBoard
   );
 };
+
+// app.get('/api/test/all', [authJwt.verifyToken], controller.allAccess);
+
+// app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);

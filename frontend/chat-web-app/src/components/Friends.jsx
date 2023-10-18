@@ -48,6 +48,9 @@ function Friends(props) {
       <div className={classes.friendsItemsList}>
         {/* render friends list component */}
         <FriendsList data={shortsArray} />
+        {/* <FriendItem />
+        <FriendItem />
+        <FriendItem /> */}
       </div>
     </div>
   );

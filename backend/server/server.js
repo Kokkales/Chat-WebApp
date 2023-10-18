@@ -12,9 +12,10 @@ var corsOptions = {
 const db = require('./models');
 const Role = db.role;
 // console.log(db);
-db.sequelize.sync({ force: true }).then(() => {
+// { force: true }
+db.sequelize.sync().then(() => {
   console.log('Drop and Resync Db');
-  initial();
+  // initial();
 });
 
 function initial() {
