@@ -9,26 +9,24 @@ module.exports = function (app) {
     );
     next();
   });
-
   app.get('/getUserFriends', [authJwt.verifyToken], controller.userFriends);
 
   app.get('/getUserData', [authJwt.verifyToken], controller.userData);
 
-  app.post('/addFriend', controller.addFriend);
-
-  app.get(
-    '/api/test/user',
-    [authJwt.verifyToken, authJwt.isUser],
-    controller.userBoard
-  );
-
-  app.get(
-    '/api/test/admin',
-    [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
-  );
+  app.post('/addFriend', [authJwt.verifyToken], controller.addFriend);
 };
 
+// app.get(
+//   '/api/test/user',
+//   [authJwt.verifyToken, authJwt.isUser],
+//   controller.userBoard
+// );
+
+// app.get(
+//   '/api/test/admin',
+//   [authJwt.verifyToken, authJwt.isAdmin],
+//   controller.adminBoard
+// );
 // app.get('/api/test/all', [authJwt.verifyToken], controller.allAccess);
 
 // app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);

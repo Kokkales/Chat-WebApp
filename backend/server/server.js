@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/message.routes')(app);
 var corsOptions = {
   origin: 'http://localhost:8081',
 };

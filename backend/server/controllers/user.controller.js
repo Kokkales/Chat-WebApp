@@ -29,24 +29,29 @@ exports.userData = (req, res) => {
 
 exports.userFriends = (req, res) => {
   User.findByPk(req.body.id, {
+    attributes: ['id', 'username'],
     include: [
       {
         model: User,
         as: 'UserOneFriends',
         through: 'friends',
+        attributes: ['id', 'username'],
       },
       {
         model: User,
         as: 'UserTwoFriends',
         through: 'friends',
+        attributes: ['id', 'username'],
       },
     ],
   })
     .then((user) => {
       if (user) {
         const userOneFriends = user.UserOneFriends; // Friends where the user is UserOne
-        const userTwoFriends = user.UserTwoFriends; // Friends where the user is UserTwo
-        res.json({ userOneFriends, userTwoFriends });
+        // const userTwoFriends = user.UserTwoFriends; // Friends where the user is UserTwo
+        res.json({ userOneFriends });
+
+        // res.json({ userOneFriends, userTwoFriends });
       } else {
         res.status(404).json({ error: 'User not found' });
       }
@@ -79,8 +84,9 @@ exports.adminBoard = (req, res) => {
 exports.addFriend = (req, res) => {
   //TODO cjeck if the friend exists
   //TODO check if they are already friends
-  const userId1 = 6; // User 1's ID
-  const userId2 = 7; // User 2's ID
+  const userId1 = req.body.id; // User 1's ID
+  const userId2 = req.body.friendId; // User 2's ID
+  console.log('NEW FRIENDS', userId1, ' & ', userId2);
 
   // Create a friendship between user1 and user2
   User.findByPk(userId1, { include: 'UserOneFriends' })
