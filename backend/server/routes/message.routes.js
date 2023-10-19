@@ -11,4 +11,6 @@ module.exports = function (app) {
   });
   app.get('/getMyMessages', controller.userMessages);
   app.post('/sendMessage', controller.sendMessage);
+  app.get('/getConversation', controller.getConversation);
+  app.get('/getLastMessage', controller.getLastMessage);
 };
