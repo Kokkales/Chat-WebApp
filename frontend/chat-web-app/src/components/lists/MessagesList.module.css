@@ -1,0 +1,15 @@
+.meassagesList {
+  list-style-type: none;
+  /* margin: 10px; */
+  height: 100%;
+  padding: 2px;
+  /* overflow: hidden; */
+  background-color: rgb(255, 255, 255);
+  overflow: scroll;
+  scrollbar-width: none;
+  grid-gap: 20px;
+}
+
+.meassagesList::-webkit-scrollbar {
+  display: none;
+}

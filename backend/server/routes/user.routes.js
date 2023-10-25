@@ -9,11 +9,12 @@ module.exports = function (app) {
     );
     next();
   });
-  app.get('/getUserFriends', [authJwt.verifyToken], controller.userFriends);
+  // [authJwt.verifyToken],
+  app.get('/getUserFriends', controller.userFriends);
 
-  app.get('/getUserData', [authJwt.verifyToken], controller.userData);
+  app.get('/getUserData', controller.userData);
 
-  app.post('/addFriend', [authJwt.verifyToken], controller.addFriend);
+  app.post('/addFriend', controller.addFriend);
 };
 
 // app.get(

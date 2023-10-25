@@ -8,7 +8,7 @@ const Role = db.role;
 exports.userData = (req, res) => {
   User.findOne({
     where: {
-      id: req.body.id,
+      id: req.query.id,
     },
   }).then((user) => {
     if (!user) {
@@ -17,18 +17,19 @@ exports.userData = (req, res) => {
         .send({ message: "Couldn't load data.Permission denied!." });
     }
     user.getRoles().then((roles) => {
+      const roleNames = roles.map((role) => role.name);
       res.status(200).send({
         id: user.id,
         username: user.username,
         email: user.email,
-        role: roles,
+        role: roleNames,
       });
     });
   });
 };
 
 exports.userFriends = (req, res) => {
-  User.findByPk(req.body.id, {
+  User.findByPk(req.query.id, {
     attributes: ['id', 'username'],
     include: [
       {
@@ -84,7 +85,7 @@ exports.adminBoard = (req, res) => {
 exports.addFriend = (req, res) => {
   //TODO cjeck if the friend exists
   //TODO check if they are already friends
-  const userId1 = req.body.id; // User 1's ID
+  const userId1 = req.query.id; // User 1's ID
   const userId2 = req.body.friendId; // User 2's ID
   console.log('NEW FRIENDS', userId1, ' & ', userId2);
 

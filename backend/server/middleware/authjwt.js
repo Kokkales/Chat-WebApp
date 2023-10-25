@@ -4,8 +4,11 @@ const db = require('../models');
 const User = db.user;
 const Session = db.session;
 
+// TODO change every API with params
 verifyToken = (req, res, next) => {
   let token = req.headers['x-access-token'];
+  const idParam = req.query.idParam;
+  console.log('This is the id Param');
   console.log('MY ID ISSSS::::::', req.body.id);
 
   if (!token) {

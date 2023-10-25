@@ -3,17 +3,17 @@ import Card from '../ui/Card';
 function MessageItem(props) {
   return (
     <div>
-      {props.type == 'reciever' && (
+      {props.type == 'receiver' && (
         <div className={classes.messageRowLeft}>
           <div className={classes.message}>
             {props.type == 'sender' && (
               <Card>
-                <p className={classes.messageTextSender}>{props.text}</p>
+                <p className={classes.messageTextSender}>{props.content}</p>
               </Card>
             )}
-            {props.type == 'reciever' && (
+            {props.type == 'receiver' && (
               <Card>
-                <p className={classes.messageTextReciever}>{props.text}</p>
+                <p className={classes.messageTextReciever}>{props.content}</p>
               </Card>
             )}
           </div>
@@ -24,12 +24,12 @@ function MessageItem(props) {
           <div className={classes.message}>
             {props.type == 'sender' && (
               <Card>
-                <p className={classes.messageTextSender}>{props.text}</p>
+                <p className={classes.messageTextSender}>{props.content}</p>
               </Card>
             )}
-            {props.type == 'reciever' && (
+            {props.type == 'receiver' && (
               <Card>
-                <p className={classes.messageTextReciever}>{props.text}</p>
+                <p className={classes.messageTextReciever}>{props.content}</p>
               </Card>
             )}
           </div>

@@ -34,8 +34,8 @@ exports.sendMessage = (req, res) => {
 };
 
 exports.getConversation = (req, res) => {
-  const senderId = req.body.id;
-  const receiverId = req.body.friendId;
+  const senderId = req.query.id;
+  const receiverId = req.query.friendId;
   // console.log('SenderId::::', senderId);
   // console.log('ReceiverId::::', receiverId);
   Message.findAll({
@@ -65,7 +65,14 @@ exports.getConversation = (req, res) => {
     // ],
   })
     .then((messages) => {
-      // console.log('Messages: ', messages);
+      for (let i = 0; i < messages.length; i++) {
+        if (req.query.id == messages[i].senderId) {
+          messages[i].dataValues.type = 'receiver';
+        } else {
+          messages[i].dataValues.type = 'sender';
+        }
+      }
+      console.log('Messages: ', messages);
       res.json(messages);
     })
     .catch((error) => {
@@ -75,7 +82,7 @@ exports.getConversation = (req, res) => {
 };
 
 exports.getLastMessage = (req, res) => {
-  const senderId = 1; // Replace with the desired senderId
+  const senderId = req.query.id; // Replace with the desired senderId
 
   Message.findAll({
     attributes: ['messageContent', 'timestamp', 'receiverId', 'senderId'],
@@ -91,10 +98,28 @@ exports.getLastMessage = (req, res) => {
       ['createdAt', 'DESC'],
     ],
   })
-    .then((messages) => {
+    .then(async (messages) => {
+      // Fetch the usernames of the sender and receiver
+      const userIds = new Set([
+        ...messages.map((message) => message.senderId),
+        ...messages.map((message) => message.receiverId),
+      ]);
+      const users = await User.findAll({
+        attributes: ['id', 'username'],
+        where: {
+          id: [...userIds],
+        },
+      });
+
+      const userMap = new Map();
+      users.forEach((user) => {
+        if (user.id != req.query.id) {
+          userMap.set(user.id, user.username);
+        }
+      });
+
       // Filter and format the results to match the SQL query structure
       const formattedMessages = [];
-
       const uniqueSenderReceiverKeys = new Set();
 
       messages.forEach((message) => {
@@ -106,9 +131,11 @@ exports.getLastMessage = (req, res) => {
           uniqueSenderReceiverKeys.add(senderReceiverKey);
           formattedMessages.push({
             messageContent: message.messageContent,
-            timestamp: message.timestamp,
+            // timestamp: message.timestamp,
             receiverId: message.receiverId,
             senderId: message.senderId,
+            receiverUserName: userMap.get(message.receiverId),
+            senderUserName: userMap.get(message.senderId),
           });
         }
       });

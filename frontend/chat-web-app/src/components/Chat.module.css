@@ -23,13 +23,13 @@
 .chatSection {
   /* background-color: green; */
   grid-area: 2 / 1 / 3 / 2;
-  overflow: scroll;
-  scrollbar-width: none;
+  /* overflow: scroll;
+  scrollbar-width: none; */
 }
 
-.chatSection::-webkit-scrollbar {
+/* .chatSection::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .textSection {
   /* background-color: yellow; */

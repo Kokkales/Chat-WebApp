@@ -1,11 +1,21 @@
 import classes from './Chat.module.css';
 import Card from './ui/Card';
 import MessageItem from './items/MessageItem';
+import MessagesList from './lists/MessagesList';
 import sendIcon from '../images/send.png';
 import infoIcon from '../images/info.png';
 import userIcon from '../images/user.png';
 import phoneIcon from '../images/telephone.png';
+import { useEffect, useState } from 'react';
 function Chat(props) {
+  const [convertation, setConvertation] = useState(props.convertation);
+  useEffect(() => {
+    setConvertation(props.convertation);
+    console.log('I AM THE PROPS::::::', props.convertation);
+    console.log('I AM THE CHAT::::::', convertation);
+  }, [props.convertation]);
+
+  console.log('I AM OUTSIDE::::::', convertation);
   return (
     <Card>
       <div className={classes.chat}>
@@ -14,7 +24,7 @@ function Chat(props) {
             <img width={'50px'} height={'50px'} src={userIcon} alt="user" />
           </div>
           <div className={classes.userNameBox}>
-            <h4 className={classes.userName}>John Doe</h4>
+            <h4 className={classes.userName}>{convertation.toUsername}</h4>
           </div>
           <div className={classes.optionsBox}>
             <img
@@ -34,33 +44,7 @@ function Chat(props) {
           </div>
         </section>
         <section className={classes.chatSection}>
-          <MessageItem text="Hello John" type="reciever" />
-          <MessageItem text="Hello Mike" type="sender" />
-
-          <MessageItem text="How are you" type="reciever" />
-          <MessageItem text="Good how are you?" type="sender" />
-          <MessageItem text="ok  " type="sender" />
-
-          <MessageItem
-            text="this is a new chat app that I am building for my portfolio"
-            type="reciever"
-          />
-          <MessageItem
-            text="Lorem ipsum dolor sit, amet consectetur a"
-            type="reciever"
-          />
-          {/* <MessageItem
-            text="Studyiiinggggggggggggggggggggggggggggggggggggggggggg"
-            type="reciever"
-          /> */}
-          <MessageItem
-            text="LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti animi dolorum architectoem"
-            type="sender"
-          />
-          <MessageItem
-            text="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti animi dolorum architecto corrupti eum recusandae repellendus accusamus ea quaerat aliquid esse quod amet quo dolor, quidem adipisci, neque odio doloremque!"
-            type="reciever"
-          />
+          <MessagesList data={convertation} />
         </section>
         <section className={classes.textSection}>
           <div className={classes.textBox}>

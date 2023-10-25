@@ -1,15 +1,17 @@
-import classes from './Friends.module.css';
+import classes from './LastChats.module.css';
+import LastChatItem from './items/LastChatItem';
+import LastChatsList from './lists/LastChatsList';
 import FriendItem from './items/FriendItem';
-import FriendsList from '../components/lists/FriendsList';
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Friends(props) {
+function LastChats(props) {
   const [shortsArray, setShortsArray] = useState([]);
   useEffect(() => {
     try {
       axios
-        .get('http://localhost:3001/getFriendsShortChats', {
+        .get('http://localhost:3001/getLastMessage?id=1', {
           headers: {
             // Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json', // Correct header name
@@ -18,18 +20,17 @@ function Friends(props) {
         })
         .then((response) => {
           const data = response.data;
+          console.log('Shorts::', data);
           const shorts = [];
           for (const key in data) {
-            if (data.hasOwnProperty(key)) {
-              const short = {
-                key: key,
-                ...data[key],
-              };
-              shorts.push(short);
-            }
+            const short = {
+              key: key,
+              ...data[key],
+            };
+            shorts.push(short);
             setShortsArray(shorts);
           }
-          console.log(shortsArray);
+          // console.log(shortsArray);
         })
         .catch((error) => {
           console.log(error);
@@ -38,6 +39,13 @@ function Friends(props) {
       console.log(error);
     }
   }, []);
+  const [childConvertation, setChildConvertation] = useState([]);
+
+  function receivedConvertationFromChild(receivedData) {
+    setChildConvertation(receivedData);
+    props.sendDataToMainChatPage(receivedData);
+    console.log('I ΑΜ THE SECOND LIST ', childConvertation);
+  }
 
   return (
     <div className={classes.friends}>
@@ -47,8 +55,12 @@ function Friends(props) {
       </div>
       <div className={classes.friendsItemsList}>
         {/* render friends list component */}
-        <FriendsList data={shortsArray} />
-        {/* <FriendItem />
+        <LastChatsList
+          data={shortsArray}
+          sendDataToMainChatPage={receivedConvertationFromChild}
+        />
+        {/*
+        <FriendItem />
         <FriendItem />
         <FriendItem /> */}
       </div>
@@ -56,4 +68,4 @@ function Friends(props) {
   );
 }
 
-export default Friends;
+export default LastChats;

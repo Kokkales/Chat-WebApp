@@ -1,83 +1,34 @@
 .friendItem {
   background-color: rgb(255, 255, 255);
   /* background-color: blueviolet; */
-  width: auto;
+  width: 170px;
+  height: 150px;
   /* height: 10vh; */
   border-radius: 12px;
   margin-bottom: 10px;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: 10% 30% 60%;
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* display: flex; */
+  /* border-bottom: 1px solid #ccc; */
+  /* display: flex; */
 }
 
-.statusSection {
-  grid-area: 1 / 1 / 2 / 2;
-  width: 100%;
-  height: 100%;
+.profilePicture {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.profilePictureSection {
-  grid-area: 1 / 2 / 2 / 3;
-  /* background-color: red; */
-  /* margin: 10px; */
-  /* padding: 20px; */
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 60% 40%;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.userProfilePicture {
-  /* background-color: blue; */
-  grid-area: 1 / 1 / 2 / 2;
-  height: 100%;
+.usernameSection {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
 }
 
-.userNameBox {
-  /* background-color: green; */
-  grid-area: 2 / 1 / 3 / 2;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.lastMessageSection {
-  grid-area: 1 / 3 / 2 / 4;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.onlineStatusCircle {
-  background-color: green;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.offlineStatusCircle {
-  background-color: green;
-  width: 20px;
-  height: 20px;
+.profileCircle {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
   border-radius: 50%;
 }

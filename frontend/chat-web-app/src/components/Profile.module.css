@@ -1,21 +1,54 @@
 .profileContent {
   height: 100%;
-  background-color: red;
+  /* background-color: red; */
   display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: 20% 80%;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 40% 60%;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  /* padding: 20px; */
 }
 
 .profileSection {
   grid-area: 1/1/2/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileCircle {
+  width: 200px;
+  height: 200px;
+  background-color: grey;
+  border-radius: 50%;
 }
 
 .profileDataSection {
   grid-area: 2/1/3/2;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .allFriendsSection {
   grid-area: 1/2/3/3;
+  /* background-color: purple; */
+  padding-right: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* column-gap: 10px; */
+  /* max-width: 100px; */
+  /* overflow: scroll; */
+  /* scrollbar-width: none; */
+}
+
+.friendsTitle {
+  font-size: 32px;
+}
+
+.allFriendsSection::-webkit-scrollbar {
+  /* display: none; */
 }
