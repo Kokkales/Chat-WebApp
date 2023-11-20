@@ -4,13 +4,13 @@ import Chat from './Chat';
 import MainNavigationLayout from './mainLayouts/MainNavigationLayout';
 import FooterLayout from './mainLayouts/FooterLayout';
 import Layout from './mainLayouts/Layout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function ChatPage(props) {
   const [childData, setChildData] = useState([]);
 
   function receivedConvertationFromChild(data) {
     setChildData(data);
-    console.log('I am the last receiver::: ', data);
+    // console.log('I am the last receiver::: ', data);
   }
   return (
     <section className={classes.mainContent}>

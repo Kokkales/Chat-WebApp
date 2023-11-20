@@ -12,10 +12,23 @@ function Chat(props) {
   useEffect(() => {
     setConvertation(props.convertation);
     console.log('I AM THE PROPS::::::', props.convertation);
-    console.log('I AM THE CHAT::::::', convertation);
+    // console.log('I AM THE CHAT::::::', convertation);
   }, [props.convertation]);
 
-  console.log('I AM OUTSIDE::::::', convertation);
+  function sendMessageHandler(event) {
+    event.preventDefault();
+    console.log('Button clicked!');
+    const WebSocketA = new WebSocket('ws://localhost:3002');
+    WebSocketA.onopen = () => {
+      const message = {
+        from: 1,
+        to: 2,
+        content: 'Hello, UserB!',
+      };
+      WebSocketA.send(JSON.stringify(message));
+    };
+  }
+
   return (
     <Card>
       <div className={classes.chat}>
@@ -54,7 +67,7 @@ function Chat(props) {
               placeholder="Type a message"
             />
           </div>
-          <button className={classes.sendButton}>
+          <button className={classes.sendButton} onClick={sendMessageHandler}>
             <img width={'30px'} height={'30px'} src={sendIcon} alt="send" />
           </button>
           {/* <div className={classes.buttonBox}> */}

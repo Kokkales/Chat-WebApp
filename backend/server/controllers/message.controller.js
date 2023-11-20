@@ -33,6 +33,37 @@ exports.sendMessage = (req, res) => {
     });
 };
 
+const WebSocket = require('ws');
+const server = new WebSocket.Server({ port: 3002 });
+server.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    try {
+      const parsedMessage = JSON.parse(message);
+      const { from, to, content } = parsedMessage;
+      const currentDate = new Date();
+      // console.log('MESSAGE INFO:::', req.body);
+      const newMessage = {
+        messageContent: content,
+        status: 'sent',
+        timestamp: currentDate.getFullYear(),
+        senderId: from, // Sender's ID
+        receiverId: to, // Receiver's ID
+      };
+      Message.create(newMessage)
+        .then((result) => {
+          // console.log('New message created succesfully!', result);
+          console.log('successful');
+        })
+        .catch((error) => {
+          console.log('internal error on ws');
+        });
+      console.log(`Received Message from ${from} to ${to}: ${content}`);
+    } catch (error) {
+      console.log('Invalid message format');
+    }
+  });
+});
+
 exports.getConversation = (req, res) => {
   const senderId = req.query.id;
   const receiverId = req.query.friendId;

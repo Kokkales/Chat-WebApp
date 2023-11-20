@@ -1,7 +1,7 @@
 import classes from './LastChatsList.module.css';
 import FriendItem from '../items/FriendItem';
 import LastChatItem from '../items/LastChatItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function LastChatsList(props) {
   const [childData, setChildData] = useState([]);

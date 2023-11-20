@@ -1,5 +1,6 @@
 import classes from './MessagesList.module.css';
 import MessageItem from '../items/MessageItem';
+import { useState, useEffect } from 'react';
 
 function MeassagesList(props) {
   return (

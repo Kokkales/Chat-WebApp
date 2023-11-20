@@ -4,10 +4,36 @@ import userIcon from '../../images/user.png';
 // import circle from '../../images/black-circle.png';
 import axios from 'axios';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function LastChatItem(props) {
   const [conversation, setConversation] = useState([]);
   const [isConversation, setIsConversation] = useState(false);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const WebSocketB = new WebSocket('ws://localhost:3002');
+
+    WebSocketB.onopen = () => {
+      console.log('WebSocket connection established for UserB');
+    };
+
+    WebSocketB.onmessage = (event) => {
+      const receivedMessage = JSON.parse(event.data);
+      setConversation((prevConversation) => [
+        ...prevConversation,
+        receivedMessage,
+      ]);
+      // Update key to force re-render
+      setKey((prevKey) => prevKey + 1);
+    };
+
+    // Clean up WebSocket connection on component unmount
+    return () => {
+      WebSocketB.close();
+    };
+  }, []);
+
   function lastChatOnClickHandler(event) {
     event.preventDefault();
     console.log(
